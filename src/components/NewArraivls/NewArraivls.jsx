@@ -9,7 +9,7 @@ const NewArraivls = () => {
     setActiveFilter(fillter);
   }
   return (
-    <div className="px-10 md:px-2">
+    <div className="container">
       {/* actions */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-20">
         <div className="flex items-center gap-x-3">

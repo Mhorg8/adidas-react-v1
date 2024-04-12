@@ -14,26 +14,46 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Slider = () => {
   const [windowSize, setWindowSize] = useState("");
-  const mediaQueryLarge = window.matchMedia("(min-width: 1024px)");
+  const mediaQueryLarge = window.matchMedia("(min-width: 1280px)");
+  const mediaQueryNormal = window.matchMedia(
+    "(min-width: 1024px) and (max-width: 1279px)"
+  );
   const mediaQueryMedium = window.matchMedia(
     "(min-width: 768px) and (max-width: 1023px)"
   );
   const mediaQuerySmall = window.matchMedia("(max-width: 767px)");
 
-  const handleWindowSize = () => {
-    if (mediaQueryLarge.matches) {
-      setWindowSize("large");
-    } else if (mediaQueryMedium.matches) {
-      setWindowSize("medium");
-    } else if (mediaQuerySmall.matches) {
-      setWindowSize("small");
-    }
-    console.log(windowSize);
-  };
+  useEffect(() => {
+    const handleWindowSize = () => {
+      if (mediaQueryLarge.matches) {
+        setWindowSize("large");
+      } else if (mediaQueryNormal.matches) {
+        setWindowSize("nromal");
+      } else if (mediaQueryMedium.matches) {
+        setWindowSize("medium");
+      } else if (mediaQuerySmall.matches) {
+        setWindowSize("small");
+      }
+    };
+    // Initial call to set the window size on component mount
+    handleWindowSize();
+
+    // Event listeners for changes in window size
+    const listener = () => {
+      handleWindowSize();
+    };
+    window.addEventListener("resize", listener);
+
+    // Cleanup function to remove event listener
+    return () => {
+      window.removeEventListener("resize", listener);
+    };
+  }, []);
+
   return (
     <Swiper
       // install Swiper modules
@@ -42,26 +62,30 @@ const Slider = () => {
       slidesPerView={
         windowSize === "large"
           ? 4
+          : windowSize === "normal"
+          ? 3
           : windowSize === "medium"
           ? 2
           : windowSize === "small"
           ? 1
-          : 4
+          : 3
       }
-      navigation
+      // navigation
       effect="cards"
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
-      className="mt-10 w-full"
-      onResize={() => handleWindowSize()}>
+      className="mt-10 w-full">
       {product_list.map((product, index) => {
         return (
-          <SwiperSlide key={index} product={product}>
-            <Product key={index} product={product}></Product>
-          </SwiperSlide>
+          <>
+            <SwiperSlide key={index} product={product}>
+              <Product key={index} product={product}></Product>
+            </SwiperSlide>
+          </>
         );
       })}
-      ...
+      <br />
+      <br />
     </Swiper>
   );
 };
