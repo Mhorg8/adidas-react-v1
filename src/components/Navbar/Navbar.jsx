@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import TopNavbar from "./TopNavbar";
 import logo from "../../assets/logo.png";
 import MobileMenu from "../Navbar/MobileMenu";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="relative">
@@ -17,13 +17,12 @@ const Navbar = () => {
         </a>
 
         <ul className="flex items-center gap-x-4 absolute left-1/2 -translate-x-1/2 ">
-          <li className="nav-item font-bold text-xl">MEN</li>
-          <li className="nav-item font-bold text-xl">WOMEN</li>
-          <li className="nav-item font-bold text-xl">KIDS</li>
-          <li className="nav-item">SALE</li>
-          <li className="nav-item">3 STRIPE LIFE</li>
+          <Link className={"nav-item font-bold text-xl"}>MEN</Link>
+          <Link className="nav-item font-bold text-xl">WOMEN</Link>
+          <Link className="nav-item font-bold text-xl">KIDS</Link>
+          <Link className="nav-item">SALE</Link>
+          <Link className="nav-item">3 STRIPE LIFE</Link>
         </ul>
-
         <div className="flex items-center gap-x-4">
           <div className="relative">
             <input
@@ -36,7 +35,9 @@ const Navbar = () => {
 
           <i className="ri-user-3-line font-bold text-2xl cursor-pointer"></i>
           <i className="ri-heart-2-line font-bold text-2xl cursor-pointer"></i>
-          <i className="ri-shopping-bag-2-line font-bold text-2xl cursor-pointer"></i>
+          <Link to="/shoppingPage">
+            <i className="ri-shopping-bag-2-line font-bold text-2xl cursor-pointer"></i>
+          </Link>
         </div>
       </div>
     </nav>

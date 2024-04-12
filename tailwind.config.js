@@ -43,8 +43,17 @@ export default {
       '5xl': '64px',
     },
     extend: {
-    }
-  },
-  plugins: [],
-}
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' }
+        },
+      },
+      animation: {
+        fadeIn: 'fadeIn 2s '
+      }
+    },
+    plugins: [],
+  }
 
+}

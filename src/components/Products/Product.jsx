@@ -3,8 +3,8 @@ const Product = ({ product, key, ref }) => {
     <div
       ref={ref}
       key={key}
-      className="w-[350px] h-full flex flex-col col-sapn-12 md:col-span-6 lg:col-span-3">
-      <div className="img-container w-[350px] h-[350px] relative ">
+      className="w-[350px] h-full flex flex-col col-sapn-12 md:col-span-6 lg:col-span-3 hover:shadow-md ">
+      <div className="img-container w-[350px] h-[350px] relative">
         <img
           className="w-full h-full object-cover"
           src={product.imgSrc}

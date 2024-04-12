@@ -1,11 +1,10 @@
-import React from "react";
 import HeroImg from "../../assets/hero.avif";
 import PrimaryBtn from "../Button";
 const Hero = () => {
   return (
-    <div className="hero w-full h-[85vh] overflow-hidden relative">
+    <div className="hero w-full h-[85vh] overflow-hidden relative ">
       <img
-        className="w-full h-full object-cover object-right md:object-center"
+        className="w-full h-full object-cover object-right md:object-center animate-fadeIn"
         src={HeroImg}
         alt="runing shoes"
       />
