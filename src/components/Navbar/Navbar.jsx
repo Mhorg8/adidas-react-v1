@@ -12,9 +12,9 @@ const Navbar = () => {
       <MobileMenu />
 
       <div className="hidden md:flex items-center justify-between relative px-3 cursor-pointer">
-        <a href="#">
+        <Link to="/">
           <img className="w-[100px]" src={logo} alt="" />
-        </a>
+        </Link>
 
         <ul className="flex items-center gap-x-4 absolute left-1/2 -translate-x-1/2 ">
           <Link className={"nav-item font-bold text-xl"}>MEN</Link>
